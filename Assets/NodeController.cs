@@ -28,7 +28,7 @@ public class NodeController : MonoBehaviour
             if (randomValue < 0.5f)
             {
                 int selectedNodeIndex = Random.Range(0, validNodes.Count);
-                return validNodes[selectedNodeIndex];
+                return validNodes.Get(selectedNodeIndex);
             }
             else
             {

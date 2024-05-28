@@ -50,21 +50,18 @@ public class CustomList<T>
         get { return count; }
     }
 
-    public T this[int index]
+    public T Get(int index)
     {
-        get
+        if (index < 0 || index >= count)
         {
-            if (index < 0 || index >= count)
-            {
-                throw new IndexOutOfRangeException("Index out of range");
-            }
-
-            Node current = head;
-            for (int i = 0; i < index; i++)
-            {
-                current = current.next;
-            }
-            return current.data;
+            throw new IndexOutOfRangeException("Index out of range");
         }
+
+        Node current = head;
+        for (int i = 0; i < index; i++)
+        {
+            current = current.next;
+        }
+        return current.data;
     }
 }
