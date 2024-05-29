@@ -6,7 +6,7 @@ public class GraphController: MonoBehaviour
 {
     public CustomList<NodeController> listOfNodes;
     public NodeController actualNode;
-    public PlayerMovement playerMovement;
+    public EnemyPatrolMovement playerMovement;
     void Start()
     {
         listOfNodes = new CustomList<NodeController>();
@@ -67,6 +67,61 @@ public class GraphController: MonoBehaviour
             listOfNodes.Add(node8);
         }
 
+        GameObject nodeObject9 = GameObject.Find("Node (9)");
+        NodeController node9 = nodeObject8.GetComponent<NodeController>();
+        if (node9 != null)
+        {
+            listOfNodes.Add(node9);
+        }
+
+        GameObject nodeObject10 = GameObject.Find("Node (10)");
+        NodeController node10 = nodeObject8.GetComponent<NodeController>();
+        if (node10 != null)
+        {
+            listOfNodes.Add(node10);
+        }
+
+        GameObject nodeObject11 = GameObject.Find("Node (11)");
+        NodeController node11 = nodeObject8.GetComponent<NodeController>();
+        if (node11 != null)
+        {
+            listOfNodes.Add(node11);
+        }
+
+        GameObject nodeObject12 = GameObject.Find("Node (12)");
+        NodeController node12 = nodeObject8.GetComponent<NodeController>();
+        if (node12 != null)
+        {
+            listOfNodes.Add(node12);
+        }
+
+        GameObject nodeObject13 = GameObject.Find("Node (13)");
+        NodeController node13 = nodeObject8.GetComponent<NodeController>();
+        if (node13 != null)
+        {
+            listOfNodes.Add(node13);
+        }
+
+        GameObject nodeObject14 = GameObject.Find("Node (14)");
+        NodeController node14 = nodeObject8.GetComponent<NodeController>();
+        if (node14 != null)
+        {
+            listOfNodes.Add(node14);
+        }
+
+        GameObject nodeObject15 = GameObject.Find("Node (15)");
+        NodeController node15 = nodeObject8.GetComponent<NodeController>();
+        if (node15 != null)
+        {
+            listOfNodes.Add(node15);
+        }
+
+        GameObject nodeObject16 = GameObject.Find("Node (16)");
+        NodeController node16 = nodeObject8.GetComponent<NodeController>();
+        if (node16 != null)
+        {
+            listOfNodes.Add(node16);
+        }
         playerMovement.MoveToPosition(actualNode.gameObject.transform.position);
         playerMovement.SetCurrentNode(actualNode);
 

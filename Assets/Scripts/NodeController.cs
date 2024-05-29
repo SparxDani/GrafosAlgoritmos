@@ -14,54 +14,51 @@ public class NodeController : MonoBehaviour
         for (int i = 0; i < adyNodes.Length; i++)
         {
             NodeController node = adyNodes[i];
-
             if (node != previousNode)
             {
                 validNodes.Add(node);
             }
         }
 
+        //Debug.Log($"Valid nodes count: {validNodes.Count}");
+
         if (validNodes.Count > 0)
         {
-            float randomValue = Random.value;
-
-            if (randomValue < 0.5f)
-            {
-                int selectedNodeIndex = Random.Range(0, validNodes.Count);
-                return validNodes.Get(selectedNodeIndex);
-            }
-            else
-            {
-                return previousNode;
-            }
+            int selectedNodeIndex = Random.Range(0, validNodes.Count);
+            NodeController selectedNode = validNodes.Get(selectedNodeIndex);
+            //Debug.Log($"Selected Node: {selectedNode.name} at index: {selectedNodeIndex}");
+            return selectedNode;
         }
 
         return null;
     }
 
-
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Enemy")
         {
-            PlayerMovement player = other.GetComponent<PlayerMovement>();
+            EnemyPatrolMovement player = other.GetComponent<EnemyPatrolMovement>();
             NodeController previousNode = player.GetCurrentNode();
             NodeController selectedNode = GetNextNode(previousNode);
 
-            if (selectedNode != null)
+            if (selectedNode != null && selectedNode != this)
             {
-                player.SetCurrentNode(this);
+                //Debug.Log($"Player moved to node: {selectedNode.name}");
+                player.SetCurrentNode(selectedNode);
                 player.MoveToPosition(selectedNode.gameObject.transform.position);
                 selectedNode.DecreaseNodeEnergy(player.energyDrainAmount);
             }
-            
+            /*else
+            {
+                Debug.Log("Selected node is null or the same as the current node");
+            }*/
         }
     }
+
+
 
     public void DecreaseNodeEnergy(float amount)
     {
         nodeEnergy -= amount;
-
-       
     }
 }
